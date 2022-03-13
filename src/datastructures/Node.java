@@ -1,6 +1,6 @@
 package datastructures;
 
-public class Node {
+public class Node implements PrintableNode{
 	
 	private Boolean isLeaf;
 	
@@ -48,6 +48,32 @@ public class Node {
 			leafData[dataSize] = record;
 			dataSize++;
 		}
+	}
+
+	@Override
+	public PrintableNode getLeft() {
+		// TODO Auto-generated method stub
+		return this.left;
+	}
+
+	@Override
+	public PrintableNode getRight() {
+		// TODO Auto-generated method stub
+		return this.right;
+	}
+
+	@Override
+	public String getText() {
+		// TODO Auto-generated method stub
+		if(isLeaf) {
+			String output = "["+this.leafData[0] + "]";
+			for(int i=1;i<this.dataSize;i++) {
+				output+=  "\n["+this.leafData[i] + "]";
+			}
+			return output;
+		}
+		else
+			return this.identifier.toString();
 	}
 	
 }

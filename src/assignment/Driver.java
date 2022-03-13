@@ -54,6 +54,9 @@ public class Driver {
 				case 1:
 					insertRecord();
 					break;
+				case 3:
+					kdTree.print();
+					break;
 				case 4:
 					System.out.println("Thanks for using KDTree Project!! Have a good day!!");
 					System.exit(0);

@@ -23,5 +23,9 @@ public class NodeIdentifier {
 		this.value = value;
 	}
 	
+	public String toString() {
+		return "("+this.key+","+this.value+")";
+	}
+	
 
 }
