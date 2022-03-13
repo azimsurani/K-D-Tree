@@ -1,11 +1,11 @@
 package datastructures;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Record {
 	
-	private Map<String,Integer> data = new HashMap<>();
+	private Map<String,Integer> data = new LinkedHashMap<>();
 	
 	public void insert(String key,Integer value) {
 		data.put(key, value);
