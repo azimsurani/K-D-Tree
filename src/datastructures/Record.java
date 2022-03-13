@@ -16,14 +16,14 @@ public class Record {
 	}
 	
 	public String toString() {
-		String output="";
+		String output="{";
 		
 		for(Map.Entry<String, Integer> entry : data.entrySet()) {
 			String key = entry.getKey();
 		    Integer value = entry.getValue();
-		    output+= "("+key+","+value+") ";
+		    output+= " ("+key+","+value+") ";
 		}
-		return output;
+		return output+"}";
 		
 	}
 }

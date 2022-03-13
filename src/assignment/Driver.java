@@ -55,7 +55,9 @@ public class Driver {
 					insertRecord();
 					break;
 				case 3:
-					kdTree.print();
+					System.out.println("\nThe inorder traversal for current tree is : ");
+					kdTree.printInorder(kdTree.getRoot());
+					System.out.println("\n");
 					break;
 				case 4:
 					System.out.println("Thanks for using KDTree Project!! Have a good day!!");
