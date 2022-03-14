@@ -18,7 +18,7 @@ public class Node{
 		this.isLeaf = isLeaf;
 		
 		if(isLeaf) {
-			leafData = new Record[2];
+			leafData = new Record[Constants.MAX_DATA_PER_LEAF];
 		}
 
 	}
@@ -44,7 +44,7 @@ public class Node{
 	}
 	
 	public void insertRecord(Record record) {
-		if(dataSize<2) {
+		if(dataSize<Constants.MAX_DATA_PER_LEAF) {
 			leafData[dataSize] = record;
 			dataSize++;
 		}

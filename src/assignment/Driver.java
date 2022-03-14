@@ -86,7 +86,7 @@ public class Driver {
 		if(kdTree.insertRecord(record))
 			System.out.println("Record was inserted successfully");
 		else
-			System.out.println("Something went wrong");
+			System.out.println("Insertion was not successful. Please try again!!");
 		
 	}
 
