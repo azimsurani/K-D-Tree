@@ -75,11 +75,13 @@ public class KDTree {
 
 				String newKey = fields.get(depth%n);
 
-				Record[] leafData = temp.getRecords();
+				List<Record> leafData = temp.getRecords();
 
-				int a = data.get(newKey);
-				int b = leafData[0].getData().get(newKey);
-				int c = leafData[1].getData().get(newKey);
+				int a = data.get(newKey); // new data
+
+				int b = leafData.get(0).getData().get(newKey);
+
+				int c = leafData.get(1).getData().get(newKey);
 
 				//duplicate median value
 				if(a==b && a==c) {
@@ -88,8 +90,8 @@ public class KDTree {
 					String nextKey = fields.get((depth+1)%n);
 
 					int x = data.get(nextKey);
-					int y = leafData[0].getData().get(nextKey);
-					int z = leafData[1].getData().get(nextKey);
+					int y = leafData.get(0).getData().get(nextKey);
+					int z = leafData.get(1).getData().get(nextKey);
 
 					if(x==y && x==z && y==z) {
 
@@ -132,16 +134,16 @@ public class KDTree {
 
 	}
 
-	private void createNode(String newKey, Map<String, Integer> data, Record[] leafData, Node parent, String flag,Record record) {
+	private void createNode(String newKey, Map<String, Integer> data, List<Record> leafData, Node parent, String flag,Record record) {
 
 		int a = data.get(newKey);
-		int b = leafData[0].getData().get(newKey);
-		int c = leafData[1].getData().get(newKey);
-		
+		int b = leafData.get(0).getData().get(newKey);
+		int c = leafData.get(1).getData().get(newKey);
+
 		Node temp=null;
-		
+
 		if(a==b || a==c) {
-			
+
 			if(a==b && b<c) {
 				// a=b < c
 				temp = new Node(false); // Create new node with "> median" identifier key value
@@ -149,35 +151,35 @@ public class KDTree {
 
 				temp.left = new Node(true);
 				temp.left.insertRecord(record);
-				temp.left.insertRecord(leafData[0]);
+				temp.left.insertRecord(leafData.get(0));
 
 				temp.right = new Node(true);
-				temp.right.insertRecord(leafData[1]);
-				
+				temp.right.insertRecord(leafData.get(1));
+
 			}else if(a==b && c<b) {
 				// a=b > c
 				temp = new Node(false); // Create new node with median identifier key value
 				temp.setIdentifier(newKey, b);
 
 				temp.left = new Node(true);
-				temp.left.insertRecord(leafData[1]);
+				temp.left.insertRecord(leafData.get(1));
 
 				temp.right = new Node(true);
-				temp.right.insertRecord(leafData[0]);
+				temp.right.insertRecord(leafData.get(0));
 				temp.right.insertRecord(record);
-				
+
 			}else if(a==c && b<c) {
 				// a=c > b
 				temp = new Node(false); // Create new node with median identifier key value
 				temp.setIdentifier(newKey, a);
 
 				temp.left = new Node(true);
-				temp.left.insertRecord(leafData[0]);
+				temp.left.insertRecord(leafData.get(0));
 
 				temp.right = new Node(true);
-				temp.right.insertRecord(leafData[1]);
+				temp.right.insertRecord(leafData.get(1));
 				temp.right.insertRecord(record);
-				
+
 			}else {
 				// a=c < b
 				temp = new Node(false); // Create new node with "> median" identifier key value
@@ -185,30 +187,30 @@ public class KDTree {
 
 				temp.left = new Node(true);
 				temp.left.insertRecord(record);
-				temp.left.insertRecord(leafData[1]);
+				temp.left.insertRecord(leafData.get(1));
 
 				temp.right = new Node(true);
-				temp.right.insertRecord(leafData[0]);
-				
+				temp.right.insertRecord(leafData.get(0));
+
 			}
-			
-			
+
+
 		}else if(b==c && b<a) {
 			// b=c < a
 			temp = new Node(false); // Create new node with "> median" identifier key value
 			temp.setIdentifier(newKey,a);
 
 			temp.left = new Node(true);
-			temp.left.insertRecord(leafData[0]);
-			temp.left.insertRecord(leafData[1]);
+			temp.left.insertRecord(leafData.get(0));
+			temp.left.insertRecord(leafData.get(1));
 
 			temp.right = new Node(true);
 			temp.right.insertRecord(record);
 		}
 
 		else {
-			
-			int array[] = {data.get(newKey),  leafData[0].getData().get(newKey),  leafData[1].getData().get(newKey)};
+
+			int array[] = {data.get(newKey),  leafData.get(0).getData().get(newKey),  leafData.get(1).getData().get(newKey)};
 
 			Arrays.sort(array);
 
@@ -223,8 +225,8 @@ public class KDTree {
 					temp.left.insertRecord(record);
 
 					temp.right = new Node(true);
-					temp.right.insertRecord(leafData[0]);
-					temp.right.insertRecord(leafData[1]);
+					temp.right.insertRecord(leafData.get(0));
+					temp.right.insertRecord(leafData.get(1));
 				}else {
 					// a < c < b
 					temp = new Node(false); // Create new node with median identifier key value
@@ -234,8 +236,8 @@ public class KDTree {
 					temp.left.insertRecord(record);
 
 					temp.right = new Node(true);
-					temp.right.insertRecord(leafData[0]);
-					temp.right.insertRecord(leafData[1]);
+					temp.right.insertRecord(leafData.get(0));
+					temp.right.insertRecord(leafData.get(1));
 				}
 			}else if(b==array[0]) {
 
@@ -245,11 +247,11 @@ public class KDTree {
 					temp.setIdentifier(newKey, a);
 
 					temp.left = new Node(true);
-					temp.left.insertRecord(leafData[0]);
+					temp.left.insertRecord(leafData.get(0));
 
 					temp.right = new Node(true);
 					temp.right.insertRecord(record);
-					temp.right.insertRecord(leafData[1]);
+					temp.right.insertRecord(leafData.get(1));
 				}else {
 					//  b < c < a
 					temp = new Node(false); // Create new node with median identifier key value
@@ -257,10 +259,10 @@ public class KDTree {
 
 					temp.left = new Node(true);
 
-					temp.left.insertRecord(leafData[0]);
+					temp.left.insertRecord(leafData.get(0));
 
 					temp.right = new Node(true);
-					temp.right.insertRecord(leafData[1]);
+					temp.right.insertRecord(leafData.get(1));
 					temp.right.insertRecord(record);						
 				}
 			}else {
@@ -271,21 +273,21 @@ public class KDTree {
 					temp.setIdentifier(newKey, a);
 
 					temp.left = new Node(true);
-					temp.left.insertRecord(leafData[1]);
+					temp.left.insertRecord(leafData.get(1));
 
 					temp.right = new Node(true);
 					temp.right.insertRecord(record);
-					temp.right.insertRecord(leafData[0]);
+					temp.right.insertRecord(leafData.get(0));
 				}else {
 					//  c < b < a
 					temp = new Node(false); // Create new node with median identifier key value
 					temp.setIdentifier(newKey, b);
 
 					temp.left = new Node(true);
-					temp.left.insertRecord(leafData[1]);
+					temp.left.insertRecord(leafData.get(1));
 
 					temp.right = new Node(true);
-					temp.right.insertRecord(leafData[0]);
+					temp.right.insertRecord(leafData.get(0));
 					temp.right.insertRecord(record);
 				}
 
@@ -310,12 +312,74 @@ public class KDTree {
 		return root;
 	}
 
+	public boolean deleteRecord(Record record) {
+
+		Node temp = root;
+		Node parent = null;
+		Map<String,Integer> recordData = record.getData();
+
+		String flag = null;
+
+		while(true) {
+
+			if(temp==null) {
+				return false;
+			}
+
+			if(!temp.isLeaf()) {
+
+				parent = temp;
+
+				NodeIdentifier identifier = temp.getIdentifier();
+
+				if(recordData.get(identifier.getKey()) < identifier.getValue() ) {
+					temp = temp.left;
+					flag = "left";
+				}else {
+					temp = temp.right;
+					flag = "right";
+				}
+
+			}else {
+
+				if(temp.removeRecord(record)) {
+					
+					if(temp.getDataSize()==0) {
+						
+						if(parent!=null) { // if it is not a root node
+							
+							if(flag.equals("left")) {
+								parent.left = null;
+							}else {
+								parent.right = null;
+							}
+							
+						}else {
+							root = null;
+						}
+						
+					}
+					return true;
+				}else {
+					return false;
+				}
+
+			}
+
+		}
+
+	}
+
 	/* Given a binary tree, print its nodes in inorder*/
 	public void printInorder(Node node)
 	{
-		if (node == null)
+		if(root==null) {
+			System.out.print("EOD");
 			return;
-
+		}
+		if (node == null) {
+			return;
+		}
 		/* first recur on left child */
 		printInorder(node.left);
 

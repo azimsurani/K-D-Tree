@@ -1,12 +1,15 @@
 package datastructures;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Node{
 	
 	private Boolean isLeaf;
 	
 	private NodeIdentifier identifier;
 	
-	private Record[] leafData;
+	private List<Record> leafData;
 	
 	private int dataSize=0;
 	
@@ -18,7 +21,7 @@ public class Node{
 		this.isLeaf = isLeaf;
 		
 		if(isLeaf) {
-			leafData = new Record[Constants.MAX_DATA_PER_LEAF];
+			leafData = new ArrayList<>(Constants.MAX_DATA_PER_LEAF);
 		}
 
 	}
@@ -39,13 +42,13 @@ public class Node{
 		return dataSize;
 	}
 	
-	public Record[] getRecords() {
+	public List<Record> getRecords() {
 		return this.leafData;
 	}
 	
 	public void insertRecord(Record record) {
 		if(dataSize<Constants.MAX_DATA_PER_LEAF) {
-			leafData[dataSize] = record;
+			leafData.add(record);
 			dataSize++;
 		}
 	}
@@ -54,14 +57,23 @@ public class Node{
 	public String toString() {
 		// TODO Auto-generated method stub
 		if(isLeaf) {
-			String output = "["+this.leafData[0] + "]";
+			String output = "["+this.leafData.get(0) + "]";
 			for(int i=1;i<this.dataSize;i++) {
-				output+=  ",["+this.leafData[i] + "]";
+				output+=  ",["+this.leafData.get(i) + "]";
 			}
 			return output;
 		}
 		else
 			return this.identifier.toString();
+	}
+	
+	public Boolean removeRecord(Record record) {
+		if(leafData.contains(record)) {
+			leafData.remove(record);
+			this.dataSize--;
+			return true;
+		}
+		return false;
 	}
 	
 }

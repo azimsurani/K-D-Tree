@@ -26,4 +26,20 @@ public class Record {
 		return output+"}";
 		
 	}
+	
+	public boolean equals(Object object)
+    {
+        if (object != null && object instanceof Record )
+        {
+        	Record record = (Record) object;
+        	for(Map.Entry<String, Integer> entry : this.data.entrySet()) {
+    			String key = entry.getKey();
+    		    if(!record.getData().get(key).equals(entry.getValue())) {
+    		    	return false;
+    		    }
+    		}
+        }
+
+        return true;
+    }
 }
