@@ -1,0 +1,148 @@
+C:\Users\azim2\eclipse-workspace\KDTree\bin>java assignment/Driver
+Welcome to KD-Tree Project!!
+-----------------------------
+
+Please enter the total number of dimesions/atrribututes : 2
+Please enter the name of Field 1 : Age
+Please enter the name of Field 2 : Salary
+--------------------------
+--------------------------
+1. Add a record
+2. Delete a record
+3. Display the tree
+4. Exit
+--------------------------
+Please enter your choice : 1
+Please enter the following data :
+Age : 25
+Salary : 60
+Record was inserted successfully
+--------------------------
+1. Add a record
+2. Delete a record
+3. Display the tree
+4. Exit
+--------------------------
+Please enter your choice : 1
+Please enter the following data :
+Age : 45
+Salary : 60
+Record was inserted successfully
+--------------------------
+1. Add a record
+2. Delete a record
+3. Display the tree
+4. Exit
+--------------------------
+Please enter your choice : 1
+Please enter the following data :
+Age : 50
+Salary : 75
+Record was inserted successfully
+--------------------------
+1. Add a record
+2. Delete a record
+3. Display the tree
+4. Exit
+--------------------------
+Please enter your choice : 1
+Please enter the following data :
+Age : 50
+Salary : 100
+Record was inserted successfully
+--------------------------
+1. Add a record
+2. Delete a record
+3. Display the tree
+4. Exit
+--------------------------
+Please enter your choice : 1
+Please enter the following data :
+Age : 30
+Salary : 260
+Record was inserted successfully
+--------------------------
+1. Add a record
+2. Delete a record
+3. Display the tree
+4. Exit
+--------------------------
+Please enter your choice : 1
+Please enter the following data :
+Age : 25
+Salary : 400
+Record was inserted successfully
+--------------------------
+1. Add a record
+2. Delete a record
+3. Display the tree
+4. Exit
+--------------------------
+Please enter your choice : 3
+
+The inorder traversal for current tree is :
+[{ (Age,25)  (Salary,60) }] <-> (Salary,260) <-> [{ (Age,30)  (Salary,260) }],[{ (Age,25)  (Salary,400) }] <-> (Age,45) <-> [{ (Age,45)  (Salary,60) }] <-> (Salary,75) <-> [{ (Age,50)  (Salary,75) }],[{ (Age,50)  (Salary,100) }] <-> EOD
+
+--------------------------
+1. Add a record
+2. Delete a record
+3. Display the tree
+4. Exit
+--------------------------
+Please enter your choice : 2
+Please enter the following data :
+Age : 25
+Salary : 30
+Deletion was not successful. Please try again with valid data!!
+--------------------------
+1. Add a record
+2. Delete a record
+3. Display the tree
+4. Exit
+--------------------------
+Please enter your choice : 2
+Please enter the following data :
+Age : 25
+Salary : 60
+Record was deleted successfully
+--------------------------
+1. Add a record
+2. Delete a record
+3. Display the tree
+4. Exit
+--------------------------
+Please enter your choice : 3
+
+The inorder traversal for current tree is :
+(Salary,260) <-> [{ (Age,30)  (Salary,260) }],[{ (Age,25)  (Salary,400) }] <-> (Age,45) <-> [{ (Age,45)  (Salary,60) }] <-> (Salary,75) <-> [{ (Age,50)  (Salary,75) }],[{ (Age,50)  (Salary,100) }] <-> EOD
+
+--------------------------
+1. Add a record
+2. Delete a record
+3. Display the tree
+4. Exit
+--------------------------
+Please enter your choice : 2
+Please enter the following data :
+Age : 50
+Salary : 75
+Record was deleted successfully
+--------------------------
+1. Add a record
+2. Delete a record
+3. Display the tree
+4. Exit
+--------------------------
+Please enter your choice : 3
+
+The inorder traversal for current tree is :
+(Salary,260) <-> [{ (Age,30)  (Salary,260) }],[{ (Age,25)  (Salary,400) }] <-> (Age,45) <-> [{ (Age,45)  (Salary,60) }] <-> (Salary,75) <-> [{ (Age,50)  (Salary,100) }] <-> EOD
+
+--------------------------
+1. Add a record
+2. Delete a record
+3. Display the tree
+4. Exit
+--------------------------
+Please enter your choice : 4
+Thanks for using KDTree Project!! Have a good day!!
